@@ -17,6 +17,9 @@ io.on("connection", (socket) => {
     socket.username = username;
   });
 
+  connectedUsers.add(socket.id);
+  io.emit("user count", connectedUsers.size);
+
   socket.broadcast.emit("connection", `${socket.username} connected`);
   socket.emit("new connection", "welcome");
 
@@ -29,6 +32,8 @@ io.on("connection", (socket) => {
     console.log("user disconnected");
     socket.broadcast.emit("disconnection", `${socket.username} disconnected`);
   });
+
+  
 });
 
 server.listen(3002, () => {

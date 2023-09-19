@@ -89,8 +89,6 @@
         <button id="setUsername">Set Username</button>
     </div>
 
-    <div id="connectedUsers">Connected Users: 0</div>
-
     <div class="chatBox">
         <ul id="messages"></ul>
         <form id="form" action="">
@@ -136,10 +134,6 @@
             item.textContent = `${data.username}: ${data.message}`;
             messages.appendChild(item);
             window.scrollTo(0, document.body.scrollHeight);
-        });
-
-        socket.on('user count', (count) => {
-            connectedUsersDiv.textContent = `Connected Users: ${count}`;
         });
     </script>
 
